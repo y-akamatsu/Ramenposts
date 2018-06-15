@@ -11,9 +11,15 @@
   </aside>
   <div class="col-xs-8">
     <ul class="nav nav-tabs nav-justified">
-      <li><a href="#">Ramenposts</a></li>
+      <li class="<%= 'active' if current_page?(user_path(@user)) %>"><%= link_to user_path(@user) do %>Ramenposts <span class="badge"><%= @count_ramenposts %></span><% end %></li>
       <li><a href="#">Followings</a></li>
       <li><a href="#">Followers</a></li>
     </ul>
   </div>
 </div>
+
+<% if @user.image? %>
+  <%= image_tag @user.image.url %>
+<% else %>
+　<img class="media-object img-rounded img-responsive" src="<%= gravatar_url(@user, { size: 150 }) %>" alt="">
+<% end %>

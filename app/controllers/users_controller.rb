@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
  before_action :require_user_logged_in, only: [:index, :show, :edit, :destroy]
-  
+ 
   def index
     @users = User.all.page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
+    @ramenposts = @user.ramenposts.order('create_at DESC').page(params[:page])
+    counts(@user)
   end
 
   def new
@@ -34,7 +36,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :image_cache)
   end
   
 end

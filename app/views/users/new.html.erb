@@ -26,6 +26,11 @@
         <%= f.label :password_confirmation, 'Confirmation' %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
+      
+        <%= f.label :image %>
+　　    <%= image_tag @user.image.thumb.url if @user.image? %>
+      　<%= f.file_field :image %>
+　      <%= f.hidden_field :image_cache %>
 
       <%= f.submit 'Sign up', class: 'btn btn-primary btn-block' %>
     <% end %>

@@ -1,0 +1,23 @@
+<ul class="media-list">
+  <% ramenposts.each do |ramenpost| %>
+  <li class="media">
+    <div class="media-left">
+      <img class="media-object img-rounded" src="<%= gravatar_url(ramenpost.user, { size: 50 }) %>" alt="">
+    </div>
+     <div class="media-body">
+      <div>
+        <%= link_to ramenpost.user.name, user_path(ramenpost.user) %> <span class="text-muted">posted at <%= ramenpost.created_at %></span>
+      </div>
+      <div>
+        <p><%= ramenpost.content %></p>
+      </div>
+      <div>
+        <% if current_user == ramenpost.user %>
+          <%= link_to "Delete", ramenpost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+        <% end %>
+      </div>
+    </div>
+  </li>
+  <% end %>
+  <%= paginate ramenposts %>
+</ul>
