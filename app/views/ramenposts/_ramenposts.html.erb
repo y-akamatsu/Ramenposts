@@ -1,23 +1,39 @@
 <ul class="media-list">
+ <div class="row">
   <% ramenposts.each do |ramenpost| %>
-  <li class="media">
-    <div class="media-left">
-      <img class="media-object img-rounded" src="<%= gravatar_url(ramenpost.user, { size: 50 }) %>" alt="">
-    </div>
-     <div class="media-body">
+   <div class="col-md-4 col-sm-6">
+    <li class="media">
+      <div class="media-left">
+        <img class="media-object img-rounded" src="<%= gravatar_url(ramenpost.user, { size: 50 }) %>" alt="">
+      </div>
+      <div class="media-body">
       <div>
         <%= link_to ramenpost.user.name, user_path(ramenpost.user) %> <span class="text-muted">posted at <%= ramenpost.created_at %></span>
       </div>
-      <div>
-        <p><%= ramenpost.content %></p>
+      <p class="img-responsive thumbnail　aligncenter size-full wp-image-425" data-toggle="modal" data-target="#image_Modal" style="cursor:pointer"><%= image_tag ramenpost.image.to_s %></p>
+      <div class="modal fade" id="image_Modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+       <div class="modal-dialog modal-lg modal-middle"> 
+        <div class="text-center">
+         <div class="modal-body">
+          <p><%= ramenpost.restaurant_name %></p>
+          <p class="aligncenter size-full wp-image-425">
+          <%= image_tag ramenpost.image.to_s %></p>
+         </div>
+         <div class="modal-img_footer">
+          <p><%= ramenpost.menu %></p>
+          <p><%= ramenpost.content %></p>
+          <button type="button" class="btn btn-success" data-dismiss="modal">Close</button> 
+         </div>
+        </div>
+       </div>
       </div>
-      <div>
-        <% if current_user == ramenpost.user %>
-          <%= link_to "Delete", ramenpost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
-        <% end %>
-      </div>
+      <% if current_user == ramenpost.user %>
+        <%= link_to "Delete", ramenpost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
+      <% end %>
+        <%= render 'likes/like_button', ramenpost: ramenpost %>
+     </li>
     </div>
-  </li>
-  <% end %>
+   <% end %>
   <%= paginate ramenposts %>
+ </div>
 </ul>

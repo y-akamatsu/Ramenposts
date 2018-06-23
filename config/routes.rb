@@ -1,14 +1,4 @@
 Rails.application.routes.draw do
-  get 'ramenposts/create'
-
-  get 'ramenposts/destroy'
-
-  get 'sessions/new'
-
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
   root to: 'toppages#index'
   
   get 'login', to: 'sessions#new'
@@ -16,6 +6,18 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new'
-  resources :users, only: [:index, :show, :new, :create, :edit, :destroy]
+  resources :users, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    member do
+      get :followings
+      get :followers
+      get :likes
+    end
+    collection do
+      get :search
+    end
+  end
+ 
   resources :ramenposts, only: [:create, :edit, :destroy]
+  resources :relationships, only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy]
 end

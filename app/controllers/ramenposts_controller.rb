@@ -1,12 +1,12 @@
 class RamenpostsController < ApplicationController
   before_action :require_user_logged_in
-  defore_action :
+  before_action :correct_user, only: [:destroy]
   
   def create
     @ramenpost = current_user.ramenposts.build(ramenpost_params)
     if @ramenpost.save
       flash[:success] = 'ラーメンを投稿しました。'
-      redirect_to root_url
+      redirect_to user_path(current_user)
     else
       @ramenposts = current_user.ramenposts.order('created_at DESC').page(params[:page])
       flash.now[:danger] = 'ラーメンの投稿に失敗しました。'
@@ -23,7 +23,7 @@ class RamenpostsController < ApplicationController
   private
   
   def ramenpost_params
-    params.require(:ramenpost).permit(:content, :image)
+    params.require(:ramenpost).permit(:content, :image, :menu, :restaurant_name)
   end
   
   def correct_user
