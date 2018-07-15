@@ -1,0 +1,30 @@
+<h1>likeランキング</h1>
+<% if @like_rankings.present? %>
+  <div class="row">
+    <% @like_rankings.each_with_index do |ramenpost, index| %>
+      <div class="item">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+          <div class="panel panel-default">
+            <div class="panel-heading text-center">
+            　<%= image_tag ramenpost.image, class: "img-responsive img-center"%>
+            </div>
+            <div class="panel-body">
+             <div class="text-center">
+              <p class="item-title">店名：<%= link_to ramenpost.restaurant_name, ramenpost.user %></br>
+              ラーメン名：<%= link_to ramenpost.menu, ramenpost.user %></p>
+             </div>
+             <div class="buttons text-center">
+              <% if logged_in? %>
+              <%= render 'likes/like_button', ramenpost: ramenpost %>
+             <% end %>
+             </div>
+            </div>
+            <div class="panel-footer">
+              <p class="text-center"><%= index+1 %>位: <%= @ranking_counts[ramenpost.id] %> Likes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div> 
+<% end %>

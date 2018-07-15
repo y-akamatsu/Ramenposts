@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+ 
+.img-center {
+  margin-right: auto;
+  margin-left: auto;
+}

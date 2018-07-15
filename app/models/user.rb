@@ -14,6 +14,10 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_posts,through: :likes, source: :ramenpost
 
+  has_many :evaluations, dependent: :destroy
+  has_many :evaluate_posts,through: :evaluations, source: :ramenpost
+
+  
   def follow(other_user)
     unless self == other_user
       self.relationships.find_or_create_by(follow_id: other_user.id)

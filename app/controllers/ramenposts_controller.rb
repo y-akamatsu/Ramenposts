@@ -23,7 +23,7 @@ class RamenpostsController < ApplicationController
   private
   
   def ramenpost_params
-    params.require(:ramenpost).permit(:content, :image, :menu, :restaurant_name)
+    params.require(:ramenpost).permit(:content, :image, :menu, :restaurant_name, :star)
   end
   
   def correct_user

@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180616052656) do
+ActiveRecord::Schema.define(version: 20180626115203) do
+
+  create_table "evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "ramenpost_id"
+    t.integer  "star",         default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["ramenpost_id"], name: "index_evaluations_on_ramenpost_id", using: :btree
+    t.index ["user_id", "ramenpost_id"], name: "index_evaluations_on_user_id_and_ramenpost_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_evaluations_on_user_id", using: :btree
+  end
 
   create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -52,6 +63,8 @@ ActiveRecord::Schema.define(version: 20180616052656) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "evaluations", "ramenposts"
+  add_foreign_key "evaluations", "users"
   add_foreign_key "likes", "ramenposts"
   add_foreign_key "likes", "users"
   add_foreign_key "ramenposts", "users"

@@ -3,7 +3,7 @@ class ToppagesController < ApplicationController
     if logged_in?
       @user = current_user
       @ramenpost = current_user.ramenposts.build
-      @ramenposts = current_user.ramenposts.order('created_at DESC').page(params[:page])
+      @ramenposts = Ramenpost.includes(:evaluations).order('created_at DESC').page(params[:page])
     end
   end
 end

@@ -13,16 +13,17 @@ class RamenpostImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
- # 画像の上限を700pxにする
-  process :resize_and_pad => [150, 150]
+  # 画像の上限を300pxにする
+  process :resize_and_pad => [400, 400]
+  
 
   # 保存形式をJPGにする
   process :convert => 'jpg'
 
   # サムネイルを生成する設定
-  # version :thumb do
-  #   process :resize_to_limit => [300, 300]
-  # end
+  version :thumb do
+    process :resize_and_pad => [150, 150]
+  end
 
   # jpg,jpeg,gif,pngしか受け付けない
   def extension_white_list
