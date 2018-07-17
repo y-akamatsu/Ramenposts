@@ -1,14 +1,14 @@
 <% if current_user.liking?(ramenpost)%>
   <%= form_for(current_user.likes.find_by(ramenpost_id: ramenpost.id), html: { method: :delete }) do |f| %>
     <%= hidden_field_tag :ramenpost_id, ramenpost.id %>
-    <%= button_tag(class: "btn btn-ghost btn-sm") do %>
-    <%= content_tag :span, "", class: "glyphicon glyphicon-thumbs-up" %>
+    <%= button_tag(class: "btn btn-default btn-md red") do %>
+    <%= content_tag :span, "", class: "glyphicon glyphicon-thumbs-up white" %>
   <% end %>
  <% end %>
 <% else %>
   <%= form_for(current_user.likes.build) do |f| %>
     <%= hidden_field_tag :ramenpost_id, ramenpost.id %>
-    <%= button_tag(class: "btn btn-default btn-sm") do %>
+    <%= button_tag(class: "btn btn-default btn-md") do %>
     <%= content_tag :span, "", class: "glyphicon glyphicon-thumbs-up"%>
   <% end %>
  <% end %>
