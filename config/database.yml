@@ -52,3 +52,12 @@ production:
   database: ramenposts_production
   username: ramenposts
   password: <%= ENV['RAMENPOSTS_DATABASE_PASSWORD'] %>
+  
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: ramenposts_production
+  username: ramenposts
+  password: <%= ENV['RAMENPOSTS_DATABASE_PASSWORD'] %>
+  
