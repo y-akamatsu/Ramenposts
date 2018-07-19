@@ -34,4 +34,11 @@ class RamenpostImageUploader < CarrierWave::Uploader::Base
   def filename
     super.chomp(File.extname(super)) + '.jpg' if original_filename.present?
   end
+  
+  # Choose what kind of storage to use for this uploader:
+  if Rails.env.production?
+    include Cloudinary::CarrierWave
+  else
+    storage :file
+  end
 end
