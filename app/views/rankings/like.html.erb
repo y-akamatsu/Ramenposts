@@ -10,8 +10,10 @@
             </div>
             <div class="panel-body">
              <div class="text-center">
-              <p class="item-title">店名：<%= link_to ramenpost.restaurant_name, ramenpost.user %></br>
-              ラーメン名：<%= link_to ramenpost.menu, ramenpost.user %></p>
+              <p class="item-title">
+              投稿者：<%= link_to ramenpost.user.name, ramenpost.user %></br>
+              店名：<%= ramenpost.restaurant_name %></br>
+              ラーメン名：<%= ramenpost.menu %></p>
              </div>
              <div class="buttons text-center">
               <% if logged_in? %>

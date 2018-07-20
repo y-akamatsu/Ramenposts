@@ -12,6 +12,6 @@ class LikesController < ApplicationController
     ramenpost = Ramenpost.find(params[:ramenpost_id])
     current_user.unlike(ramenpost)
     flash[:success] = 'likeを解除しました。'
-    redirect_back(fallback_location: root_path)
+    redirect_to likes_user_path(current_user)
   end
 end

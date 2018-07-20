@@ -6,7 +6,7 @@
       <div class="media-left">
       </div>
       <div class="media-body">
-        <%= link_to ramenpost.user.name, user_path(ramenpost.user) %> <span class="text-muted">posted at <%= ramenpost.created_at %></span>
+        <%= link_to ramenpost.user.name, ramenpost.user %> <span class="text-muted">posted at <%= ramenpost.created_at %></span>
         <%= render 'layouts/modal', ramenpost: ramenpost %>
       </li>
      </div>
