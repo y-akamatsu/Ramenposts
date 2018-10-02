@@ -25,64 +25,51 @@
       <%= render 'ramenposts/ramenposts', ramenposts: @ramenposts%>
     </div>
   </div>
-<% else %>
-   <div class="text-center">
-    <h1>お気に入りのラーメンをシェアしよう!!</h1>
-    <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
-   </div>
-   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-     <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-      </ol>
-  　<div class="row">
-    　<div class="col-lg-6 col-lg-offset-3">
-        <div class="carousel-inner" role="listbox" >
-          <div class="item active">
-           <%= image_tag 'okinoshima.jpg' %>
-            <div class="carousel-caption">
-              <h3>隠岐の島ラーメン</h3>
-               <p> 岡山県岡山市北区本町２−２３</p>
-            </div>
-          </div>
-          <div class="item">
-           <%= image_tag 'kamitora.jpg' %>
-             <div class="carousel-caption">
-              <h3>麺's room神虎</h3>
-              <p>大阪府大阪市北区梅田１丁目１１−４ 大阪駅前第4ビル</p>
-             </div>
-          </div>
-          <div class="item">
-           <%= image_tag 'saba6.jpg' %>
-            <div class="carousel-caption">
-             <h3>さば６製麺所</h3>
-             <p>大阪府大阪市福島区福島７丁目２１−３</p>
-            </div>
-          </div>
-          <div class="item">
-           <%= image_tag 'kusooyaji.jpg' %>
-            <div class="carousel-caption">
-             <h3>くそおやじ最後のひとふり</h3>
-             <p>大阪府大阪市淀川区十三本町１丁目３−１３</p>
-            </div>
-          </div>
-        </div>
+ <% else %>
+  <div class="text-center">
+  <h1>お気に入りのラーメンをシェアしよう!!</h1>
+    <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-warning' %>
+    <p></p>
+    <div class="carousel-wrapper">
+      <span id="item-1"></span>
+      <span id="item-2"></span>
+      <span id="item-3"></span>
+      <div class="carousel-item item-1">
+        <h2>麺's room神虎</h2>
+        <p>大阪府大阪市北区梅田１丁目１１−４ 大阪駅前第4ビル</p>
+        <a class="arrow arrow-prev" href="#item-3"></a>
+        <a class="arrow arrow-next" href="#item-2"></a>
       </div>
+      <div class="carousel-item item-2">
+        <h2>総大醤</h2>
+        <p>〒530-0021 大阪府大阪市北区浮田２丁目４−１６</p>
+        <a class="arrow arrow-prev" href="#item-1"></a>
+        <a class="arrow arrow-next" href="#item-3"></a>
+      </div>
+      <div class="carousel-item item-3">
+        <h2>世界一暇なラーメン屋</h2>
+        <p>大阪府大阪市北区中之島３丁目３−２３ 中之島ダイビル2階</p>
+        <a class="arrow arrow-prev" href="#item-2"></a>
+        <a class="arrow arrow-next" href="#item-1"></a>
+   　 </div>
     </div>
-    <!-- Controls -->
-    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"　data-interval="1000">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
   </div>
 　<% end %>
- <footer>
-  <div class="text-center text-muted">© 2018 Ramenposts.</div>
- </footer>
+  <footer>
+  <div class="text-center text-muted">© 2018 Ramenposts.
+   <div class="icons">
+    <a href="https://twitter.com/" target="_blank">
+      <i class="fab fa-twitter fa-2x my-gray"></i>
+    </a>
+    <a href="https://www.facebook.com/yoshitaka.akamatsu.50" target="_blank">
+      <i class="fab fa-facebook fa-2x my-gray"></i>
+    </a>
+    <a href="https://www.instagram.com/?hl=ja" target="_blank">
+      <i class="fab fa-instagram fa-2x my-gray"></i>
+    </a>
+    <a href="https://github.com/" target="_blank">
+      <i class="fab fa-github fa-2x my-gray"></i>
+    </a>
+   </div>
+  </div>
+  </footer>
