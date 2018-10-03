@@ -14,19 +14,9 @@
  *= require_self
  */
  
-.img-center {
-  margin-right: auto;
-  margin-left: auto;
+.btn {
+ margin: 10px;
 }
-
-.red{
-  background-color: red
-}
-
-.white{
-  color: white;
-}
-
 .glyphicon{
   font-size: 20px;
 }
@@ -41,6 +31,11 @@
   height:auto;
 }
 
+.img-center {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .carousel slide {
   width: 50%;
 }
@@ -50,9 +45,9 @@
 }
 
 .carousel-wrapper{
-  height:700px;
+  width:50%;
+  height:600px;
   position:relative;
-  width:700px;
   margin: 0 auto;
 }
 .carousel-item{
@@ -96,7 +91,7 @@
         background-position: 10px 50%;
       }
     }
-}
+
 
 /*Select every element*/
 [id^="item"] {
@@ -130,6 +125,9 @@
     z-index: 3;
     opacity: 1;
   }
+.about-img{
+   background:url('kusooyaji.jpg');
+   background-size:cover;
 }
 
 
