@@ -14,8 +14,8 @@
  *= require_self
  */
  
-.btn {
- margin: 10px;
+.btn-warning{
+  margin-bottom: 10px;
 }
 .glyphicon{
   font-size: 20px;
